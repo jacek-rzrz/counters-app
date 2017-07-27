@@ -11,8 +11,8 @@ export class Counter extends React.Component {
         return (
             <div>
               <span data-qa="counter-value">{value}</span>
-              <button onClick={handleIncrementClick} data-qa="counter-value-inc">+</button>
-              <button onClick={handleDecrementClick} data-qa="counter-value-dec">-</button>
+              <button onClick={handleIncrementClick} data-qa="counter-value-inc"> + </button>
+              <button onClick={handleDecrementClick} data-qa="counter-value-dec"> - </button>
               <button onClick={handleResetClick} data-qa="counter-value-reset">Reset</button>
             </div>
         );

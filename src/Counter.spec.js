@@ -63,10 +63,6 @@ describe('ConnectedCounter', () => {
             expect(store.getActions()).toContainEqual({ type: 'RESET' });
         });
 
-        it('resets counter value to 0', () => {
-            expect(counter.find('[data-qa="counter-value"]')).toHaveText('0');
-        });
-
     });
 
 });
