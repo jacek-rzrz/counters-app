@@ -7,12 +7,19 @@ import './App.css';
 
 const reducer = (state = 1, action) => {
 
-  if(action.type === 'INCREMENT') {
-    return state+1;
-  }
+    if(action.type === 'INCREMENT') {
+        return state+1;
+    }
 
-  return state;
+    if(action.type === 'DECREMENT') {
+        return state-1;
+    }
 
+    if(action.type === 'RESET') {
+        return 0;
+    }
+
+    return state;
 };
 
 
@@ -29,7 +36,7 @@ class App extends Component {
         <div className="App">
           <div className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
-            <h2>Welcome to the Counters App</h2>
+            <h1>Welcome to the Counters App</h1>
           </div>
           <ConnectedCounter />
         </div>
