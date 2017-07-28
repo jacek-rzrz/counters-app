@@ -16,14 +16,34 @@ describe('Counters App', () => {
     expect(appTestView.getCounterValue()).toHaveText('1');
   });
 
-  describe('when a plus button is clicked', () => {
+    describe('when a plus button is clicked', () => {
 
-    it('increments the counter value', () => {
-      appTestView.clickIncrementCounter();
+        it('increments the counter value', () => {
+            appTestView.clickIncrementCounter();
 
-      expect(appTestView.getCounterValue()).toHaveText('2');
+            expect(appTestView.getCounterValue()).toHaveText('2');
+        });
+
     });
 
-  });
+    describe('when a minus button is clicked', () => {
+
+        it('Decrements the counter value', () => {
+            appTestView.clickDecrementCounter();
+
+            expect(appTestView.getCounterValue()).toHaveText('0');
+        });
+
+    });
+
+    describe('when the reset button is clicked', () => {
+
+        it('resets the counter value', () => {
+            appTestView.clickResetCounter();
+
+            expect(appTestView.getCounterValue()).toHaveText('0');
+        });
+
+    });
 
 });

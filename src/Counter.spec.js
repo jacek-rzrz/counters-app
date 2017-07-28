@@ -9,36 +9,60 @@ const mockStore = configureStore();
 
 describe('Counter', () => {
 
-  it('renders the value', () => {
-    const counter = mount(<Counter value={8} />);
-    expect(counter.find('[data-qa="counter-value"]')).toHaveText('8');
-  });
+    it('renders the value', () => {
+        const counter = mount(<Counter value={8} />);
+        expect(counter.find('[data-qa="counter-value"]')).toHaveText('8');
+    });
 
 });
 
 describe('ConnectedCounter', () => {
 
-  let store, counter;
-
-  beforeEach(() => {
-    store = mockStore(10);
-    counter = mount(<Provider store={store}><ConnectedCounter /></Provider>);
-  });
-
-  it('renders a counter with value from Redux', () => {
-      expect(counter.find('[data-qa="counter-value"]')).toHaveText('10');
-  });
-
-  describe('when increment button is clicked', () => {
+    let store, counter;
 
     beforeEach(() => {
-      click(counter.find('[data-qa="counter-value-inc"]'));
+        store = mockStore(10);
+        counter = mount(<Provider store={store}><ConnectedCounter /></Provider>);
     });
 
-    it('dispatches INCREMENT action', () => {
-      expect(store.getActions()).toContainEqual({ type: 'INCREMENT' });
+    it('renders a counter with value from Redux', () => {
+        expect(counter.find('[data-qa="counter-value"]')).toHaveText('10');
     });
 
-  });
+    describe('when increment button is clicked', () => {
+
+        beforeEach(() => {
+            click(counter.find('[data-qa="counter-value-inc"]'));
+        });
+
+        it('dispatches INCREMENT action', () => {
+            expect(store.getActions()).toContainEqual({ type: 'INCREMENT' });
+        });
+
+    });
+
+    describe('when decrement button is clicked', () => {
+
+        beforeEach(() => {
+            click(counter.find('[data-qa="counter-value-dec"]'));
+        });
+
+        it('dispatches DECREMENT action', () => {
+            expect(store.getActions()).toContainEqual({ type: 'DECREMENT' });
+        });
+
+    });
+
+    describe('when reset button is clicked', () => {
+
+        beforeEach(() => {
+            click(counter.find('[data-qa="counter-value-reset"]'));
+        });
+
+        it('dispatches RESET action', () => {
+            expect(store.getActions()).toContainEqual({ type: 'RESET' });
+        });
+
+    });
 
 });
